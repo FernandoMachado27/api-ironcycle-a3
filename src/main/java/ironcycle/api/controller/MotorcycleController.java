@@ -3,6 +3,7 @@ package ironcycle.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -13,6 +14,7 @@ import ironcycle.api.model.MotorcycleRepository;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/motorcycle")
 public class MotorcycleController {
 	
 	@Autowired
@@ -22,7 +24,7 @@ public class MotorcycleController {
 		var motorcycle = new Motorcycle(motorData);
 		repository.save(motorcycle);
 		
-		var uri = uriBuilder.path("/car/{id}").buildAndExpand(motorcycle.getId()).toUri();
+		var uri = uriBuilder.path("/motorcycle/{id}").buildAndExpand(motorcycle.getId()).toUri();
 		
 		return ResponseEntity.created(uri).body(new DataDetailsMotorcycle(motorcycle));
 	}
