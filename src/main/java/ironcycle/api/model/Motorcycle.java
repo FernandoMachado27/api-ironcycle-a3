@@ -34,5 +34,23 @@ public class Motorcycle {
 		this.model = motorData.model();
 		this.year = motorData.year();
 	}
+	
+	public void updateMotorcycle(@Valid DataUpdateMotorcycle dataUpdateMotorcycle) {
+		if (dataUpdateMotorcycle.name() != null) {
+			this.name = dataUpdateMotorcycle.name();
+		}
+		
+		if (dataUpdateMotorcycle.brand() != null) {
+			this.brand = dataUpdateMotorcycle.brand();
+		}
+		
+		if (dataUpdateMotorcycle.model() != null) {
+			this.model = dataUpdateMotorcycle.model();
+		}
+		
+		if (dataUpdateMotorcycle.year() != null) {
+			this.year = dataUpdateMotorcycle.year();
+		}
+	}
 
 }
