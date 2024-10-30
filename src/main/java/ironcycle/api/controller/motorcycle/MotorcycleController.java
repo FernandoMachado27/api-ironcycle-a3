@@ -1,4 +1,4 @@
-package ironcycle.api.controller;
+package ironcycle.api.controller.motorcycle;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import ironcycle.api.model.DataDetailsMotorcycle;
-import ironcycle.api.model.DataRegistrationMotorcycle;
-import ironcycle.api.model.DataUpdateMotorcycle;
-import ironcycle.api.model.Motorcycle;
-import ironcycle.api.model.MotorcycleRepository;
+import ironcycle.api.model.motorcycle.DataDetailsMotorcycle;
+import ironcycle.api.model.motorcycle.DataRegistrationMotorcycle;
+import ironcycle.api.model.motorcycle.DataUpdateMotorcycle;
+import ironcycle.api.model.motorcycle.Motorcycle;
+import ironcycle.api.model.motorcycle.MotorcycleRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

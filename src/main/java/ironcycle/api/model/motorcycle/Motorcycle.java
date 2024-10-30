@@ -1,4 +1,4 @@
-package ironcycle.api.model;
+package ironcycle.api.model.motorcycle;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

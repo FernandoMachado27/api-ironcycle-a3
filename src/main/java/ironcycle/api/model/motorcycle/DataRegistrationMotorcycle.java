@@ -1,4 +1,4 @@
-package ironcycle.api.model;
+package ironcycle.api.model.motorcycle;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

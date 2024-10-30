@@ -1,4 +1,4 @@
-package ironcycle.api.model;
+package ironcycle.api.model.motorcycle;
 
 public record DataDetailsMotorcycle (Long id, String name, String brand, String model, String year){
 	

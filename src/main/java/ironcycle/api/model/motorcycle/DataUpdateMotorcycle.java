@@ -1,4 +1,4 @@
-package ironcycle.api.model;
+package ironcycle.api.model.motorcycle;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -9,5 +9,4 @@ public record DataUpdateMotorcycle(
 		String brand,
 		String model,
 		String year){
-
 }
