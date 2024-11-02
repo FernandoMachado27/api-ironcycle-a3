@@ -1,4 +1,4 @@
-package ironcycle.api.model;
+package ironcycle.api.model.motorcycle;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
