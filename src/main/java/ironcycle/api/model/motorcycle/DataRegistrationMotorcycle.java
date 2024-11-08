@@ -12,6 +12,7 @@ public record DataRegistrationMotorcycle(
 		String model,
 		@NotBlank(message = "Ano é obrigatório")
 		@Pattern(regexp = "\\d{4}", message = "Formato do ano é inválido")
-		String year) {
-
+		String year,
+		@NotBlank(message = "Opção é obrigatória")
+        String plan) {
 }

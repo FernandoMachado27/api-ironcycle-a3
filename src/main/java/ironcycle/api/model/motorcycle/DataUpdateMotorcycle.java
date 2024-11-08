@@ -8,5 +8,6 @@ public record DataUpdateMotorcycle(
 		String name,
 		String brand,
 		String model,
-		String year){
+		String year,
+		String plan){
 }

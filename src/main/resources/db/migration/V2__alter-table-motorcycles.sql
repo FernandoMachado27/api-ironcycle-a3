@@ -1,0 +1,2 @@
+ALTER TABLE motorcycles
+ADD COLUMN plan VARCHAR(50);
