@@ -1,5 +1,7 @@
 package ironcycle.api.controller.motorcycle;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,7 @@ import ironcycle.api.model.motorcycle.DataUpdateMotorcycle;
 import ironcycle.api.model.motorcycle.Motorcycle;
 import ironcycle.api.model.motorcycle.MotorcycleRepository;
 import ironcycle.api.model.motorcycle.list.MotorcycleLinkedList;
+import ironcycle.api.model.motorcycle.validations.ValidationRegisterMotorcycle;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -28,6 +31,9 @@ public class MotorcycleController {
 	
 	@Autowired
 	private MotorcycleRepository repository;
+	
+	@Autowired
+	private List<ValidationRegisterMotorcycle> validatons;
 
 
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -35,10 +41,12 @@ public class MotorcycleController {
 	@Transactional
 	public ResponseEntity register(@RequestBody @Valid DataRegistrationMotorcycle motorData, UriComponentsBuilder uriBuilder) {
 		var motorcycle = new Motorcycle(motorData);
+		
+		validatons.forEach(v -> v.validate(motorData));
+
 		repository.save(motorcycle);
 		
 		var uri = uriBuilder.path("/motorcycle/{id}").buildAndExpand(motorcycle.getId()).toUri();
-		
 		return ResponseEntity.created(uri).body(new DataDetailsMotorcycle(motorcycle));
 	}
 	
