@@ -28,6 +28,7 @@ public class Motorcycle {
 	private String model;
 	private String year;
 	private String plan;
+	private String plate;
 	
 	public Motorcycle(@Valid DataRegistrationMotorcycle motorData) {
 		this.name = motorData.name();
@@ -35,6 +36,7 @@ public class Motorcycle {
 		this.model = motorData.model();
 		this.year = motorData.year();
 		this.plan = motorData.plan();
+		this.plate = motorData.plate();
 	}
 	
 	public void updateMotorcycle(@Valid DataUpdateMotorcycle dataUpdateMotorcycle) {
@@ -56,6 +58,10 @@ public class Motorcycle {
 		
 		if (dataUpdateMotorcycle.plan() != null) {
 			this.plan = dataUpdateMotorcycle.plan();
+		}
+		
+		if (dataUpdateMotorcycle.plate() != null) {
+			this.plate = dataUpdateMotorcycle.plate();
 		}
 	}
 
