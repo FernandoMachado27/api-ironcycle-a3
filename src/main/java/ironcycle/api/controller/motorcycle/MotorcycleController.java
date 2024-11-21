@@ -33,7 +33,7 @@ public class MotorcycleController {
 	private MotorcycleRepository repository;
 	
 	@Autowired
-	private List<ValidationRegisterMotorcycle> validatons;
+	private List<ValidationRegisterMotorcycle> validations;
 
 
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -42,7 +42,7 @@ public class MotorcycleController {
 	public ResponseEntity register(@RequestBody @Valid DataRegistrationMotorcycle motorData, UriComponentsBuilder uriBuilder) {
 		var motorcycle = new Motorcycle(motorData);
 		
-		validatons.forEach(v -> v.validate(motorData));
+		validations.forEach(v -> v.validate(motorData));
 
 		repository.save(motorcycle);
 		
