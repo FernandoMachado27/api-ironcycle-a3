@@ -12,40 +12,48 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration // classe de configuração
-@EnableWebSecurity // vamos personalizar config de segurança
-public class SecurityConfiguration {
-	
-	@Autowired
-	private SecurityFilter securityFilter;
-	
-	@Bean // devolve obj p/ spring, ensina ele a como criar um obj que posso injetar em algum lugar, ou que ele usa internamente
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http.csrf().disable() // desabilitar ataque csrf pois o token já protege
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and().authorizeHttpRequests() 
-				.requestMatchers(HttpMethod.POST, "/login").permitAll()// libere requisição de login
-				.requestMatchers(HttpMethod.GET, "/login").permitAll()// libere requisição de login
-				.requestMatchers(HttpMethod.POST, "/motorcycle").permitAll()
-				.requestMatchers(HttpMethod.GET, "/motorcycle").permitAll()
-				.requestMatchers(HttpMethod.GET, "/users").permitAll()
-				.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll() // endereços publicos para gerar doc do SpringDoc
-				.anyRequest().authenticated() // as outras requisições é para barrar
-				.and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) // diz ao Spring qual filtro vem primeiro(a minha antes que a do Spring
-				.build(); // desabilita autenticação do form, e a autenticação seja Stateless por ser REST
-	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception { // classe que sabe criar obj authenticationManager, para usar o AutenticacaoService
-		return configuration.getAuthenticationManager();
-	}
-	
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(); // ensina ao eclipse que é para usar este algoritmo de senha, o BCrypt
-	}
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration implements WebMvcConfigurer {
 
+    @Autowired
+    private SecurityFilter securityFilter;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(authorized -> authorized
+                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/motorcycle").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")  // Permite todas as rotas
+                .allowedOrigins("http://127.0.0.1:5500")  // Origem permitida
+                .allowedMethods("GET", "POST", "PUT", "DELETE")  // Métodos permitidos
+                .allowCredentials(true)  // Permite enviar cookies e credenciais
+                .allowedHeaders("*");  // Permite todos os cabeçalhos
+    }
 
 }

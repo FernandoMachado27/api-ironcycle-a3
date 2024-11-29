@@ -7,14 +7,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthenticationService implements UserDetailsService{
-	
-	@Autowired
-	private AdminRepository adminRepository;
-	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return adminRepository.findByLogin(username);
-	}
+public class AuthenticationService implements UserDetailsService {
 
+    @Autowired
+    private AdminRepository adminRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Admin admin = (Admin) adminRepository.findByUsername(username);
+        
+        if (admin == null) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+        
+        return admin;  // Retorna o usuário encontrado
+    }
 }

@@ -1,5 +1,10 @@
 package ironcycle.api.model.admin;
 
-public record DataAuthentication(String username, String password) {
+import jakarta.validation.constraints.NotBlank;
 
-}
+public record DataAuthentication(
+	    @NotBlank
+	    String login,  // Alterar para 'login' se preferir
+	    @NotBlank
+	    String senha  // Alterar para 'senha' se preferir
+	) {}
