@@ -26,10 +26,15 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.addAllowedOrigin("*"); // Permitir todas as origens
+        corsConfig.addAllowedMethod("*"); // Permitir todos os métodos HTTP
+        corsConfig.addAllowedHeader("*"); // Permitir todos os cabeçalhos
+
         return http
-            .csrf(csrf -> csrf.disable())  
+            .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())) // Configuração de CORS
+            .cors(cors -> cors.configurationSource(request -> corsConfig)) // Aplicar a configuração de CORS
             .authorizeHttpRequests(authorized -> authorized
                 .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
