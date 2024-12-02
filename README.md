@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-**Ironcycle** é um projeto desenvolvido como parte da disciplina de Estruturas de Dados e Análise de Algoritmos, cujo objetivo é construir uma API para uma seguradora de motos. O projeto foi projetado com os princípios do SOLID em mente, garantindo um código limpo, modular e de fácil manutenção. A aplicação utiliza **Spring Boot** como framework para o backend e se conecta a um banco de dados **MySQL**. O front end foi desenvolvido com as tecnologias **HTML**, **CSS** e **JavaScript**, proporcionando uma interface interativa e amigável para o usuário.
+**Ironcycle** é um projeto desenvolvido como parte da disciplina de Estruturas de Dados e Análise de Algoritmos, cujo objetivo é construir uma API para uma seguradora de motos. O projeto foi projetado com os princípios do SOLID em mente, garantindo um código limpo, modular e de fácil manutenção. A aplicação utiliza **Spring Boot** como framework para o backend e se conecta a um banco de dados **MySQL**. O front-end foi desenvolvido com as tecnologias **HTML**, **CSS** e **JavaScript**, proporcionando uma interface interativa e amigável para o usuário.
 
 ## Funcionalidades
 
@@ -15,7 +15,7 @@
 - **Linguagem:** Java
 - **Framework:** Spring Boot
 - **Banco de Dados:** MySQL
-- **Front End:** HTML, CSS, JavaScript
+- **Front-end:** HTML, CSS, JavaScript
 - **Testes Automatizados:** Java, Selenium, Cucumber, Maven
 
 ## Estruturas de Dados
@@ -41,3 +41,19 @@ Antes de iniciar a instalação do projeto, verifique se você tem as seguintes 
 - Maven
 - MySQL Server
 - Um IDE Java (como IntelliJ IDEA ou Eclipse)
+
+## Links Relacionados
+
+- **Repositório do Front-End:** [Frontend Ironcycle](https://github.com/FernandoMachado27/frontend-ironcycle-a3)  
+- **Repositório da Automação de Testes:** [Automação Ironcycle](https://github.com/FernandoMachado27/automacao-ironcycle-a3)
+
+
+
+
+
+
+
+
+
+
+
