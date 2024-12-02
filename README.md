@@ -9,6 +9,7 @@
 - Registro e gerenciamento de usuários.
 - Listagem e gestão de informações sobre motos.
 - Testes automatizados para garantir a qualidade do software.
+- Spring Security para garantir a segurança dos dados.
 
 ## Tecnologias Utilizadas
 
