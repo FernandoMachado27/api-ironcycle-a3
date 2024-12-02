@@ -30,7 +30,7 @@ Os testes automatizados são essenciais para a verificação da funcionalidade d
 ## Integrantes do Projeto
 
 - **Arthur Cassemiro Fernandes RA:125111375561**
-- **Fernando Machado Fernandes RA125111352882:**
+- **Fernando Machado Fernandes RA:125111352882**
 - **Henrique Pedrosa Canhadas RA:125111362170**
 - **Maria Fernanda Dias da Silva RA:125111360392**
 
