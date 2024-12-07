@@ -42,6 +42,23 @@ Antes de iniciar a instalação do projeto, verifique se você tem as seguintes 
 - Maven
 - MySQL Server
 - Um IDE Java (como IntelliJ IDEA ou Eclipse)
+- Preencher application.properties (gitignore por questões de segurança)
+
+## application.properties
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost/ironcycle
+spring.datasource.username=
+spring.datasource.password=
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+server.erro.include-stacktrace=never
+
+api.security.token.secret=${JWT_SECRET:12345678}
+
+logging.level.org.springframework.security=DEBUG
 
 ## Links Relacionados
 
