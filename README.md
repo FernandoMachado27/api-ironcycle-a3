@@ -56,7 +56,7 @@ spring.jpa.properties.hibernate.format_sql=true
 
 server.erro.include-stacktrace=never
 
-api.security.token.secret=${JWT_SECRET:12345678}
+api.security.token.secret=
 
 logging.level.org.springframework.security=DEBUG
 
